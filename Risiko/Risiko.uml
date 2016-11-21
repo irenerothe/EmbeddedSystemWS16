@@ -1,0 +1,96 @@
+[Files]
+File0=Kontinent.java
+File1=Land.java
+File2=Risiko.java
+File3=Risiko_GUI.java
+File4=Spieler.java
+File5=Spielfeld.java
+
+[Box:  - Kontinent]
+X=692
+Y=411
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Box:  - Land]
+X=900
+Y=342
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Box:  - Risiko]
+X=421
+Y=40
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Box:  - Risiko_GUI]
+X=153
+Y=40
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Box:  - Spieler]
+X=233
+Y=420
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Box:  - Spielfeld]
+X=494
+Y=119
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Diagram]
+comments=0
+OffsetX=0
+OffsetY=0
+Visibility=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+ShowConnections=0
+Fontname=MS Sans Serif
+Fontsize=10
+ShowObjectDiagram=0
+
+[Connections]
+V0=Kontinent#Land#Aggregation####0#0#0
+V1=Risiko_GUI#Spielfeld#AssociationDirected####0#0#0
+V2=Spielfeld#Spieler#Aggregation####0#0#0
+V3=Spielfeld#Kontinent#Aggregation####0#0#0
+
+[Interactive]
+I0=
+
+[Window]
+Left=-8
+Top=-31
+Width=1296
+Height=490
+
