@@ -30,7 +30,6 @@ public class MenschAergerDichNicht{
     spielfeld.SpielfeldAusgeben();
     int i=0;
     boolean Siegbedingung=false;
-    FigurVerruecken(spieler[0],4,11);
     do{
       spielfeld.SpielfeldAusgeben();
       if (i==Spieleranzahl) 
@@ -44,7 +43,7 @@ public class MenschAergerDichNicht{
   }
   
   public void FigurVerruecken(Spieler spieler,int NrFigur, int Wert){
-    //alte Position zurücksetzen
+    //alte Position zurÃ¼cksetzen
     int altePosition = spieler.FigurPositionAbfragen(NrFigur);
     Figur figur=spieler.FigurAbfragen(NrFigur);
     int SpielerNr= spieler.SpielernummerAbfragen();
@@ -110,19 +109,19 @@ public class MenschAergerDichNicht{
   public void Spielerzug(Spieler spieler){
     int i,j;
     int Wuerfelwurf=0; 
-    for(i=0;i<3;i++){//3 mal Würfeln
-      //Ausgaben Würfel
+    for(i=0;i<3;i++){//3 mal WÃ¼rfeln
+      //Ausgaben WÃ¼rfel
       if(i==0){
-        System.out.println("Spieler "+spieler.SpielernummerAbfragen()+" bitte würfeln!");
+        System.out.println("Spieler "+spieler.SpielernummerAbfragen()+" bitte wÃ¼rfeln!");
         IOUtils.readChar();
       }
       else{
-        System.out.println("Ergebnis: "+ Wuerfelwurf+"\nKein Zug möglich!\nSpieler "+spieler.SpielernummerAbfragen()+" bitte erneut würfeln!");
+        System.out.println("Ergebnis: "+ Wuerfelwurf+"\nKein Zug mÃ¶glich!\nSpieler "+spieler.SpielernummerAbfragen()+" bitte erneut wÃ¼rfeln!");
         IOUtils.readChar(); 
       }
-      //Würfeln 
+      //WÃ¼rfeln 
       Wuerfelwurf = spieler.Wuerfeln(wuerfel);
-      //Prüfen, ob Zug möglich ist
+      //PrÃ¼fen, ob Zug mÃ¶glich ist
       for (j=1;j<5 ;j++) {
         if (SpielerSetzen(spieler, j, Wuerfelwurf,true)) {
           i=3;
@@ -132,7 +131,7 @@ public class MenschAergerDichNicht{
         } // end of if 
       } // end of for
       if (i==2) {
-          System.out.println("Ergebnis: "+ Wuerfelwurf+"\nKein Zug möglich!");
+          System.out.println("Ergebnis: "+ Wuerfelwurf+"\nKein Zug mÃ¶glich!");
       } // end of if-else
     }
   } 
