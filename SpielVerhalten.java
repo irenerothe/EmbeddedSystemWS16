@@ -2,29 +2,39 @@
 
 package menschaerger;
 
-import org.apache.commons.io.IOUtils;
+//import org.apache.commons.io.IOUtils;
 import java.util.Random;
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.Scanner;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class SpielVerhalten {
-
-	ArrayList<Spieler> spielerListe = new ArrayList<Spieler>();
-
-	public SpielVerhalten(String[] args) {
+	public static short anzahlSpieler = 0;
+	public static Spieler[] spieler;
+	
+	
+	public SpielVerhalten() {
+		// TODO Auto-generated constructor stub
 		// Hey constructor!
-		short anzahlSpieler = 0;
+		
 		anzahlSpieler = inputZahl("Anzahl Spieler eingeben: ");
 		//Spieler anlegen:		
 		
-        int i = 0;
-        while (i < anzahlSpieler) {
-            spielerListe.add(new Spieler());
-            i++;
-        }
+		spieler = new Spieler[anzahlSpieler];
 	}
 
+
+	public static void main(String[] args){
+		int i = 1;
+		while (i > 0) {
+			for (int k = 0; k < anzahlSpieler; k++){
+				spieler[k].spielZug();
+			}
+			
+		}
+		
+	}
+	
 	public static short inputZahl(String sFrage)  {
         System.out.println(sFrage);
         String sInput;
@@ -35,18 +45,9 @@ public class SpielVerhalten {
         return Short.parseShort(sInput);
 	}
 	
-	public void spielZug(short spielerNummer) {
-		short wurf = wuerfeln();
-		for(Spieler spieler: this.spielerListe){
-			short[] moeglicheZuege = spieler.moeglicheZuegeBerechnen();
-		};
-		short figur = inputZahl(String.format("Figuren (%d) können ziehen. Auswahl: ", moeglicheZuege[1]));
-		for(Spieler spieler: this.spielerListe){
-			
-		}
-	}
 	
-	private static short wuerfeln() { 
+	
+	public static short wuerfeln() { 
 		Random rand = new Random();
 			int w = rand.nextInt(5);
 			w++;
