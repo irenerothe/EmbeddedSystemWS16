@@ -46,7 +46,7 @@
        System.out.println("***********************************************************************************************");
        System.out.print(" H1                               H2                               H3                               H4\n");
        for (i=0;i<40;i++ ) {
-       if(i==0 || i==10 || i==20 ||i==30 ||i==40){      //Kennzeichnung der Häuser
+       if(i==0 || i==10 || i==20 ||i==30 ||i==40){      //Kennzeichnung der HÃ¤user
            System.out.print("|");
            
          if(Feld[i]==null)
@@ -70,14 +70,14 @@
        System.out.print("                              Z2                              Z3                               Z4                               Z1\n");       
        
        for (i=0;i<4;i++) { //Ausgabe der Spielerspezifischen Felder 
-         System.out.print("\nHaus Spieler"+i+":\n");
+         System.out.print("\nHaus Spieler"+(i+1)+":\n");
          for(j=0;j<4;j++){
            if(Haus[i][j]==null)
              System.out.print("_ ");
            else
              System.out.print(((Haus[i][j].Besitzer().SpielernummerAbfragen()+1)*10+Haus[i][j].NrAbfragen())+" ");
          }
-         System.out.print("\n                                                                Ziel Spieler"+i+":\n                                                                ");
+         System.out.print("\n                                                                Ziel Spieler"+(i+1)+":\n                                                                ");
          for(j=0;j<4;j++){
            if(Ziel[i][j]==null)
              System.out.print("_ ");
