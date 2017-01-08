@@ -13,7 +13,7 @@ public class MenschAergerDichNicht{
       System.out.println("Wie viele Spieler sollen teilnehmen? (1-4)");
       Spieleranzahl = IOUtils.readInt();
     }while((Spieleranzahl==0)||(Spieleranzahl>4));
-    spielfeld = new Spielfeld();
+    spielfeld = new Spielfeld(Spieleranzahl);
     wuerfel = new Wuerfel();
     spieler = new Spieler[Spieleranzahl];
     for(int k=0;k<Spieleranzahl;k++){

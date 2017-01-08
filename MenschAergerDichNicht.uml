@@ -1,10 +1,9 @@
 [Files]
-File0=..\..\AppData\Local\Temp\Datei1.java
-File1=Figur.java
-File2=MenschAergerDichNicht.java
-File3=Spiel.java
-File4=Spieler.java
-File5=Spielfeld.java
+File0=Figur.java
+File1=MenschAergerDichNicht.java
+File2=Spiel.java
+File3=Spieler.java
+File4=Spielfeld.java
 
 [Box:  - Figur]
 X=20
@@ -69,6 +68,20 @@ Fontname=MS Sans Serif
 Fontsize=10
 ShowObjectDiagram=0
 
+[Connections]
+V0=Figur#Spieler#AssociationDirected####0#0#0
+V1=MenschAergerDichNicht#Spielfeld#AssociationDirected####0#0#0
+V2=MenschAergerDichNicht#Spieler#Aggregation####0#0#0
+V3=Spieler#Figur#Aggregation####0#0#0
+V4=Spieler#Spielfeld#AssociationDirected####0#0#0
+V5=Spielfeld#Figur#Aggregation####0#0#0
+
 [Interactive]
 I0=
+
+[Window]
+Left=225
+Top=225
+Width=1691
+Height=488
 

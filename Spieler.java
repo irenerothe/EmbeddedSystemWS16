@@ -59,9 +59,9 @@ class Spieler{
   } 
   
   public void Spielzug(Wuerfel wuerfel){
-    int i,j;
-    int Wuerfelwurf=0; 
-    boolean nochmalwuerfeln=true;
+    int i,j, z;
+    int Wuerfelwurf=0;   
+    boolean nochmalwuerfeln=false;
     
     for(i=0;i<3;i++){//3 mal Würfeln
       //Ausgaben Würfel
@@ -75,29 +75,49 @@ class Spieler{
       }
       //Würfeln 
       Wuerfelwurf=wuerfel.wurf();   
-      //Prüfen, ob Zug möglich ist
       for (j=1;j<5 ;j++) {
-        if (FigurSetzen(j, Wuerfelwurf,true)) {      //Prüfen, ob überhaupt ein Zug möglich ist
+        if (FigurSetzen(j, Wuerfelwurf, Spielernummer, true)) {      //Prüfen, ob überhaupt ein Zug möglich ist
           i=3;
           j=5;
           System.out.print("Ergebnis: "+ Wuerfelwurf);
-          FigurSetzen(FigurWaehlen(), Wuerfelwurf,false);           // wenn Zug möglich, dann ausführen, dabei wird auch gefragt, welche Figur gesetzt werden soll
+          FigurSetzen(FigurWaehlen(), Wuerfelwurf, Spielernummer, false);           // wenn Zug möglich, dann ausführen, dabei wird auch gefragt, welche Figur gesetzt werden soll
           
-          if (Wuerfelwurf ==6 && nochmalwuerfeln == true) {
-            i = 2;
-            nochmalwuerfeln = false;
+          if (Wuerfelwurf ==6) {
+            nochmalwuerfeln=true;
+            }
+          else{
+            nochmalwuerfeln=false;
+            }
+          
           } // end of if
           
         } // end of if 
-      } // end of for
       
       if (i==2) {
           System.out.println("Ergebnis: "+ Wuerfelwurf+"\nKein Zug möglich!");
-      } // end of if-else
+      } 
+      
+      if (Wuerfelwurf ==6 && nochmalwuerfeln == true) {            //nochmal würfel bei 6
+            spielfeld.SpielfeldAusgeben();
+            System.out.println("Spieler "+(Spielernummer+1)+" bitte nochmal würfeln!");
+            IOUtils.readChar(); 
+            Wuerfelwurf=wuerfel.wurf();   
+            System.out.print("Ergebnis: "+ Wuerfelwurf);
+            for (z=1;z<5 ;z++) {
+              if (FigurSetzen(z, Wuerfelwurf, Spielernummer, true)) {
+                z=5; j=5; i=3;
+                FigurSetzen(FigurWaehlen(), Wuerfelwurf, Spielernummer, false); 
+                nochmalwuerfeln = false; 
+              }
+            }
+            z=5;j=5;i=3;      
+        } 
+       
+
     }
   }
    
-  public boolean FigurSetzen(int Nummer, int Wuerfelwurf, boolean NurPruefen){ 
+  public boolean FigurSetzen(int Nummer, int Wuerfelwurf,int Spielernummer, boolean NurPruefen){ 
     int i;
     int Position=FigurPositionAbfragen(Nummer);
     
@@ -117,10 +137,43 @@ class Spieler{
       }  
     }
     
-    else if(Position<=40) {
+    else if(Position<=40) {         //Figur auf dem Feld
+    
       Zielposition = FigurPositionAbfragen(Nummer) + Wuerfelwurf;
-      figurZielposition = spielfeld.FeldAbfragen(Zielposition);
-    }
+      
+      if (Spielernummer!=0 && Zielposition>40 && Position <=40) {          //Feldüberlauf
+        Zielposition = Zielposition-40;  
+      } // end of if
+      
+   
+      if (Spielernummer==1 && Position <=10 && Zielposition >10 && Zielposition <15 ){
+        Zielposition = Zielposition+30;
+      } // end of if-else
+      else if (Spielernummer==2 && Position <=20 && Zielposition >20 && Zielposition <25 ){
+        Zielposition = Zielposition+20;
+      } // end of if-else
+      else if (Spielernummer==3 && Position <=30 && Zielposition >30 && Zielposition <35){
+        Zielposition = Zielposition+10;
+      } // end of if-else
+      
+      if (Zielposition < 45) {
+           figurZielposition = spielfeld.FeldAbfragen(Zielposition);
+      } // end of if-else
+      else
+      {
+           return false;
+           }   
+        
+  
+    }     
+    else if(Position>40 && Zielposition<45) {          //Figur im Ziel
+      Zielposition = FigurPositionAbfragen(Nummer) + Wuerfelwurf;
+      figurZielposition = spielfeld.ZielAbfragen(Spielernummer, Zielposition%10);
+
+    } // end of if-else   
+    else {
+      return false;
+    } // end of if-else
     
   
     if (figurZielposition == null) {
@@ -133,6 +186,7 @@ class Spieler{
           SpielerNrZielposition = besitzerFigurZielposition.SpielernummerAbfragen();
           if (SpielerNrZielposition !=Spielernummer) {
             if (NurPruefen==false){ 
+
               besitzerFigurZielposition.FigurVerschieben(figurZielposition.NrAbfragen(),0);
               FigurVerschieben(Nummer,Zielposition);
             }
