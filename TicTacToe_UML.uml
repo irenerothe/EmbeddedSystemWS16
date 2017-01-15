@@ -1,0 +1,95 @@
+[Files]
+File0=CheckWinner.java
+File1=Player.java
+File2=RealPlayer.java
+File3=ShowGamearray.java
+File4=TTTGame.java
+File5=VirtualPlayer.java
+
+[Box:  - CheckWinner]
+X=20
+Y=249
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Box:  - Player]
+X=262
+Y=249
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Box:  - RealPlayer]
+X=177
+Y=554
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Box:  - ShowGamearray]
+X=226
+Y=40
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Box:  - TTTGame]
+X=467
+Y=40
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Box:  - VirtualPlayer]
+X=347
+Y=554
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+FontSize=10
+FontName=MS Sans Serif
+
+[Diagram]
+comments=0
+OffsetX=146
+OffsetY=0
+Visibility=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+ShowConnections=0
+Fontname=MS Sans Serif
+Fontsize=10
+ShowObjectDiagram=0
+
+[Connections]
+V0=RealPlayer#Player#Inheritends####0#0#0
+V1=ShowGamearray#Player#AssociationDirected####0#0#0
+V2=VirtualPlayer#Player#Inheritends####0#0#0
+
+[Interactive]
+I0=
+
+[Window]
+Left=26
+Top=26
+Width=1444
+Height=380
+
